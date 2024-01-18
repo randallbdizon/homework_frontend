@@ -1,24 +1,28 @@
-import logo from './logo.png';
+/*import logo from './logo.png';*/
 import './App.css';
+import Component3 from './Components';
+import Portfolio from './porfolio';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Good lord, that took a while....
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Portfolio />
+      <BasicButtons />
+    </>
+  );
+}
+
+function BasicButtons() {
+  return (
+    <Stack spacing={2} direction="row">
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+    </Stack>
   );
 }
 
