@@ -4,7 +4,12 @@ import Button from '@mui/material/Button';
 import BBBanner from "./portfolio/Media/Images/ByteBanditsBanner.gif"
 import FastTransition from "./portfolio/Media/Images/Fast_transition.gif"
 import ProfilePic from "./portfolio/Media/Images/profile_img.jpg"
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+import { promptForSecretCode } from "./portfolio/bc4150d023d3255136db671d61ac93f2/f8d76c8793380ef9b8f04f06510bb0f3";
 
 export function Portfolio() {
     return (
@@ -41,8 +46,8 @@ export function Portfolio() {
 
             <h2>Contact Information</h2>
             <p>1234 Somewhere, Dinosaur CO 81610</p>
-            <p><i className="fa-solid fa-envelope"></i> <a href="blahblah@gmail.com">blahblah@gmail.com</a></p>
-            <p><i className="fa-solid fa-phone-volume"></i> 55-IS-POTATO</p>
+            <p><FontAwesomeIcon icon={faEnvelope} /> <a href="blahblah@gmail.com">blahblah@gmail.com</a></p>
+            <p><FontAwesomeIcon icon={faPhoneVolume} /> 55-IS-POTATO</p>
 
 
             <h2>Education</h2>
@@ -57,26 +62,9 @@ export function Portfolio() {
                 computer-related
                 and network problems with an efficient and organized approach. Self-motivated approach to monitoring and
                 resolving troublesome IT issues.</p>
-            <section>
-                <ul>
-                    <li>Windows Server Administrator</li>
-                    <li>Network Administrator</li>
-                    <li>Cisco and Alcatel Networking Devices</li>
-                    <li>Port Security</li>
-                    <li>Diagnostic Tools</li>
-                    <li>VMWare and Oracle (VM)</li>
-                </ul>
-            </section>
-            <aside>
-                <ul>
-                    <li>Classified and Cryptographic Device Handling</li>
-                    <li>Data Backups</li>
-                    <li>Technical Support and Assistance</li>
-                    <li>Hardware and Software Maintenance</li>
-                    <li>Disaster Recovery and Failover</li>
-                    <li>Tenable and ACAS Scans</li>
-                </ul>
-            </aside>
+            <p>
+                <JobAPI />
+            </p>
 
             <h2>Work Experience</h2>
             <h3>Information Systems Technician</h3>
@@ -96,7 +84,7 @@ export function Portfolio() {
                 <li>Restored network functionality in a timely manner after numerous power hits.</li>
             </ul>
 
-            <a className="hiddenIcon" href="#" onclick="promptForSecretCode();"><i className="fa-solid fa-key"></i></a>
+            <a className="hiddenIcon" href="#" onclick={promptForSecretCode}><FontAwesomeIcon icon={faKey} /></a>
             <footer>
                 <p>&copy; 2023 ByteBandits</p>
             </footer>
@@ -113,9 +101,35 @@ export function Portfolio() {
 }
 
 export function HappyButton() {
+    const [isHappy, setIsHappy] = React.useState(true);
+
+    const toggleFace = (() => {
+        setIsHappy(!isHappy)
+    })
+
     return (
         <Stack spacing={0} direction="row">
-            <Button variant="text">☻</Button>
+            <Button variant="text" onClick={toggleFace}>{isHappy ? '🙂' : '☹'}</Button>
         </Stack>
     );
+}
+
+function JobAPI () {
+    const [jobs, setJobs] = React.useState([])
+
+    React.useEffect(() => {
+        fetch('https://jobicy.com/api/v2/remote-jobs?count=20&tag=python')
+            .then(response => response.json())
+            .then(data => setJobs(data.jobs));
+    }, [])
+
+    return <>
+        {jobs.map((x) => {
+            return <>
+                <li>{x.jobTitle}</li>
+            </>
+        })}
+    
+    </>
+
 }

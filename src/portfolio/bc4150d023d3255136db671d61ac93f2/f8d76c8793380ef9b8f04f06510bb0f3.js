@@ -1,4 +1,4 @@
-function promptForSecretCode() {
+export function promptForSecretCode() {
     var secretCode = prompt("Please enter password:");
 
     // Check if the user clicked "Cancel"

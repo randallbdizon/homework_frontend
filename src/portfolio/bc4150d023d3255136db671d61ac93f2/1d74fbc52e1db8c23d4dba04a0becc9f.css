@@ -26,10 +26,6 @@ body {
 
 body {}
 
-body address {
-    font-size: 12px;
-}
-
 body h1 {
     font-size: 48px;
 }

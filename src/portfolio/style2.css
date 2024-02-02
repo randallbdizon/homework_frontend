@@ -1,0 +1,72 @@
+@font-face {
+    font-family: Blogger Sans;
+    src: url("./Fonts/blogger-sans-font/Bloggersans-0rzv.otf");
+}
+
+body {
+	text-align: left;
+    font-family: Blogger Sans;
+    background-color: #000000;
+	color: white;
+	background-image: url("../../public/4cowboys.png");
+	/* Use this background 4 transition effect */
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	color: white;
+	transition: background 0.5s;
+	/* Add for transition effect */
+	/* Add for transition effect */
+	/* ^^^^^^^^^^^^^^^^^^^^^^^^
+	 ^Add 4 transition effect^ */
+}
+
+/* nav menu section*/
+
+#nav_menu {
+	text-align: center; /* Center the navigation menu */
+}
+
+#nav_menu ul
+{
+	display: flex;
+	flex-basis: 100%;
+	justify-content: space-evenly;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+#nav_menu ul li 
+{
+    	flex-basis: 33%;
+}
+#nav_menu ul li a
+{
+	display: block;
+	text-align: center;
+	padding: 1em 0;
+	text-decoration: none;
+	background-color: #178735;
+	color: white;
+	font-weight: bold;
+}
+#nav_menu ul li a.current 
+{
+	color: white;
+}
+#nav_menu li 
+{
+	font-size: 120%;
+ 	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 0.25em;
+}
+
+/*Responsive web design thresholds*/
+@media only screen and (width <= 550px) {
+    img {
+        width: 100%;
+    }
+}
