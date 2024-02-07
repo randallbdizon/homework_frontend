@@ -62,9 +62,27 @@ export function Portfolio() {
                 computer-related
                 and network problems with an efficient and organized approach. Self-motivated approach to monitoring and
                 resolving troublesome IT issues.</p>
-            <p>
-                <JobAPI />
-            </p>
+
+            <section>
+                <ul>
+                    <li>Windows Server Administrator</li>
+                    <li>Network Administrator</li>
+                    <li>Cisco and Alcatel Networking Devices</li>
+                    <li>Port Security</li>
+                    <li>Diagnostic Tools</li>
+                    <li>VMWare and Oracle (VM)</li>
+                </ul>
+            </section>
+            <aside>
+                <ul>
+                    <li>Classified and Cryptographic Device Handling</li>
+                    <li>Data Backups</li>
+                    <li>Technical Support and Assistance</li>
+                    <li>Hardware and Software Maintenance</li>
+                    <li>Disaster Recovery and Failover</li>
+                    <li>Tenable and ACAS Scans</li>
+                </ul>
+            </aside>
 
             <h2>Work Experience</h2>
             <h3>Information Systems Technician</h3>
@@ -95,7 +113,10 @@ export function Portfolio() {
             {/* <!-- Script For Transition Graphics --> */}
             <Transition />
 
-
+            <h1>PMP QUESTIONS!!!</h1>
+            <p>
+                <Questions />
+            </p>
         </>
     );
 }
@@ -114,22 +135,21 @@ export function HappyButton() {
     );
 }
 
-function JobAPI () {
-    const [jobs, setJobs] = React.useState([])
+function Questions() {
+    const [queh, setQueh] = React.useState([])
 
     React.useEffect(() => {
-        fetch('https://jobicy.com/api/v2/remote-jobs?count=20&tag=python')
+        fetch('https://night-excited-college.glitch.me/')
             .then(response => response.json())
-            .then(data => setJobs(data.jobs));
+            .then((json) => { setQueh(json) });
     }, [])
 
     return <>
-        {jobs.map((x) => {
+        {queh.map((x) => {
             return <>
-                <li>{x.jobTitle}</li>
+                <li>{x.Question}</li>
             </>
         })}
-    
-    </>
 
+    </>
 }
